@@ -40,7 +40,8 @@ class LoanOutput(BaseModel):
 @app.post("/predict", response_model=LoanOutput)
 def predict(input: LoanInput):
     input_dict = input.dict()
-    model_name = input_dict.pop("model_name")
+    model_name = input_dict.pop("model_name")  # remove model_name
+    input_dict.pop("use_smote", None)          # also remove use_smote
     
     # Prepare input for prediction
     input_df = pd.DataFrame([input_dict])
@@ -52,6 +53,7 @@ def predict(input: LoanInput):
     pred = model.predict(input_scaled)
     
     return {"approved": bool(pred[0])}
+
 
 @app.get("/health")
 def health_check():

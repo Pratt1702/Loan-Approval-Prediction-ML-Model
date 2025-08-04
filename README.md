@@ -8,6 +8,7 @@ This project is a FastAPI application that predicts loan approval based on user 
 - [About the Model](#about-the-model)
 - [API Usage](#api-usage)
 - [Example Input](#example-input)
+- [Example Response](#example-response)
 - [License](#license)
 
 ## Installation
@@ -25,17 +26,24 @@ To run this project locally, follow these steps:
    Make sure you have Python installed. Then, run:
 
    ```bash
-   pip install fastapi uvicorn pandas numpy scikit-learn imblearn
+   pip install fastapi uvicorn pandas numpy scikit-learn imblearn joblib
    ```
 
-3. **Run the FastAPI application**:
+3. **Train the models**:
+   Before running the FastAPI application, you need to train and save the models. Run the following command:
+
+   ```bash
+   python train_models.py
+   ```
+
+4. **Run the FastAPI application**:
    Start the server with the following command:
 
    ```bash
    uvicorn main:app --reload
    ```
 
-4. **Access the API documentation**:
+5. **Access the API documentation**:
    Open your web browser and go to `http://127.0.0.1:8000/docs` to view the interactive API documentation.
 
 ## About the Model

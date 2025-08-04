@@ -47,9 +47,9 @@ def scale_only(X, y):
 
 def get_model(model_name):
     if model_name == "LogisticRegression":
-        return LogisticRegression(class_weight='balanced', max_iter=1000, random_state=42)
+        return LogisticRegression( max_iter=1000, random_state=42)
     elif model_name == "RandomForestClassifier":
-        return RandomForestClassifier(n_estimators=100, random_state=42)
+        return RandomForestClassifier(n_estimators=300, random_state=42)
     elif model_name == "SVM":
         return SVC(random_state=42, probability=True)
     else:

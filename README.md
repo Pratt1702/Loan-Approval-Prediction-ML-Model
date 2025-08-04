@@ -17,8 +17,8 @@ To run this project locally, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/Pratt1702/Loan-Approval-Prediction-ML-Model
+   cd "Loan Prediction Model"
    ```
 
 2. **Install the required packages**:

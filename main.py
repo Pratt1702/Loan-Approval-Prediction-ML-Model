@@ -52,3 +52,7 @@ def predict(input: LoanInput):
     pred = model.predict(input_scaled)
     
     return {"approved": bool(pred[0])}
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}

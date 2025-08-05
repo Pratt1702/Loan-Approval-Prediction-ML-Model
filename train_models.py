@@ -39,6 +39,9 @@ def train_and_save_models():
     smote = SMOTE(random_state=42)
     X_train_resampled, y_train_resampled = smote.fit_resample(X_train_scaled, y_train)
 
+    # Calculate sample weights based on Credit_History
+    weights = X_train['Credit_History'].apply(lambda x: 0.5 if x == 1 else 2.0).values
+
     # Train models
     models = {
         "LogisticRegression": LogisticRegression(class_weight='balanced', max_iter=1000, random_state=42),
@@ -47,7 +50,10 @@ def train_and_save_models():
     }
 
     for model_name, model in models.items():
-        model.fit(X_train_resampled, y_train_resampled)
+        if model_name == "SVM":
+            model.fit(X_train_resampled, y_train_resampled, sample_weight=weights)
+        else:
+            model.fit(X_train_resampled, y_train_resampled)
         # Save the model and scaler
         joblib.dump(model, f"{model_name}.joblib")
         joblib.dump(scaler, f"{model_name}_scaler.joblib")

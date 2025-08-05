@@ -50,7 +50,7 @@ def train_and_save_models():
     }
 
     for model_name, model in models.items():
-        if model_name == "SVM":
+        if model_name == "SVM" and not isinstance(smote, SMOTE):
             model.fit(X_train_resampled, y_train_resampled, sample_weight=weights)
         else:
             model.fit(X_train_resampled, y_train_resampled)

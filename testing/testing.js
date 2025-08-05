@@ -11,10 +11,10 @@ const body = {
   Credit_History: 1,
   Property_Area: 2,
   use_smote: true,
-  model_name: "RandomForestClassifier",
+  model_name: "SVM",
 };
 
-fetch("https://loan-approval-prediction-ml-model.onrender.com/predict", {
+fetch("<URL>", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

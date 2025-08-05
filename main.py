@@ -1,10 +1,20 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware  # Import CORSMiddleware
 from pydantic import BaseModel
 from typing import Literal
 import pandas as pd
 import joblib
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Adjust the port if necessary
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Load pre-trained models and scalers
 models = {
@@ -53,7 +63,6 @@ def predict(input: LoanInput):
     pred = model.predict(input_scaled)
     
     return {"approved": bool(pred[0])}
-
 
 @app.get("/health")
 def health_check():

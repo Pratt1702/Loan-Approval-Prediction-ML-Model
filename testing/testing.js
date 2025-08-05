@@ -14,7 +14,7 @@ const body = {
   model_name: "SVM",
 };
 
-fetch("https://loan-approval-prediction-ml-model.onrender.com/predict", {
+fetch("<URL>", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

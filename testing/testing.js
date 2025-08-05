@@ -4,17 +4,17 @@ const body = {
   Married: 1,
   Dependents: 0,
   Education: 0,
-  ApplicantIncome: 4000,
-  CoapplicantIncome: 1500,
-  LoanAmount: 1200,
-  Loan_Amount_Term: 36,
+  ApplicantIncome: 56655,
+  CoapplicantIncome: 543,
+  LoanAmount: 345,
+  Loan_Amount_Term: 3455,
   Credit_History: 1,
   Property_Area: 2,
   use_smote: true,
-  model_name: "SVM",
+  model_name: "RandomForestClassifier",
 };
 
-fetch("<URL>", {
+fetch("https://loan-approval-prediction-ml-model.onrender.com/predict", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
